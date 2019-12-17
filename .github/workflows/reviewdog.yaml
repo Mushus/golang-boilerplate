@@ -1,0 +1,25 @@
+name: GolangCI-Lint With Reviewdog
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go: [1.13]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: golangci-lint
+        uses: docker://reviewdog/action-golangci-lint:v1
+        with:
+          github_token: ${{ secrets.github_token }}
