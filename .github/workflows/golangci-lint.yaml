@@ -19,4 +19,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Run GolangCI-Lint
-        uses: docker://mushus/golangci-linter:v1.0.0
+        uses: docker://mushus/golangci-linter:1.0
