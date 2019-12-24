@@ -18,16 +18,5 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-
-      - name: Setup Cache
-        uses: actions/cache@v1
-        with:
-          path: ~/go/pkg/mod
-          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-          restore-keys: |
-            ${{ runner.os }}-go-
-
       - name: Run GolangCI-Lint
-        uses: actions/checkout@v1.1.0
-        with:
-          config: .golangci.yml
+        uses: docker://mushus/golangci-linter:v1.0.0
